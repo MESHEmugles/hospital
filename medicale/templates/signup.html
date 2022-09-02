@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+
+
+
+{% load static %}
+{% load humanize %}
+
+<!-- title section -->
+{% block title %} | Signup{% endblock title %}
+
+<!-- content section -->
+{% block content %}
+<div class="signup-page">
+    <div class="container-fluid semi-sign">
+        <div class="medin">
+            <h2 class="log"><a href="{% url 'index' %}" class="i text-decoration-none m"><strong> M<span class="log">E</span>D<span class="log">I</span>C<span class="log">A</span>L<span class="log">E</span></strong></a></h2>
+        </div>
+        <div class="row justify-content-around">
+            <div class="col-sm-3 sign-up">
+                
+            </div>
+            <div class="col-auto pt-5 mt-5 mx-auto pb-2">
+                <form action="{% url 'signup' %}" method="POST" class="sign">
+                    {% csrf_token %}
+                
+                        <h1 class="m">Contact Information</h1>
+                        <div class="form-group">
+                            <label for="inputName">Username</label>
+                            <input type="text" name="username" class="form-control bg-transparent" id="inputName" placeholder="Username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName">First Name</label>
+                            <input type="text" name="first_name" class="form-control bg-transparent" id="inputName" placeholder="Fullname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputName">Last Name</label>
+                            <input type="text" name="last_name" class="form-control bg-transparent" id="inputName" placeholder="Fullname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPhone">Phone Number</label>
+                            <input type="text" name="phone_number" class="form-control bg-transparent" id="inputPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail4">Email</label>
+                            <input type="email" name="email" class="form-control bg-transparent" id="inputEmail4" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword4">Password</label>
+                            <input type="password" name="password1" class="form-control bg-transparent" id="inputPassword4" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword4">Confirm Password</label>
+                            <small id="passwordHelpBlock" class="form-text log">
+                                <b class="text-muted">Note:</b> Must contain uppercase, lowercase, one number and one special character 
+                            </small>
+                            <input type="password" name="password2" class="form-control bg-transparent" id="inputPassword5" required>
+                        </div>
+                        <div class="form-group">
+                            <!-- <label for="inputEmail4">Email</label> -->
+                            <input type="hidden" name="image" value="profile/s.jpg" class="form-control bg-transparent" id="inputImage" required>
+                        </div>
+                    <button type="submit" class="btn mi">Create Account</button>
+                </form>
+            </div>
+            <div class="col-sm-2">
+                <div class="log-write d-flex pt-5 mt-5">
+                    <h4>Login</h4>
+                    <a href="{% url 'loggin' %}" class="btn im ml-2">Signin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

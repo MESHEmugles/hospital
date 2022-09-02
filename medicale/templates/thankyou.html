@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+
+<!-- title section -->
+{% block title %} | Thankyou{% endblock title %}
+
+<!-- upper header section -->
+{% block header %}
+  {% include "header.html" %}
+{% endblock header %}
+
+{% block banner %}
+<div class="details-banner mb-5">
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light container sml-nav">
+      <a class="navbar-brand m" href="{% url 'index' %}"><strong> M<span class="log">E</span>D<span class="log">I</span>C<span class="log">A</span>L<span class="log">E</span></strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="nav snd-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link active head-stuff" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link head-stuff" href="{% url 'department' %}">Department</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle head-stuff" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Medicalist Shop
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item head-drop" href="{% url 'pharmacy' %}">Pharmacy</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item head-drop" href="{% url 'profile' %}">Your Account</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item head-drop" href="{% url 'cart' %}">Cart</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item head-drop" href="{% url 'index' %}">Blog</a>
+            </div>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link head-stuff" href="{% url 'pricing' %}">Pricing</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle head-stuff" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              About
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item head-drop" href="{% url 'contact_us' %}">Contact Us</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item head-drop" href="{% url 'index' %}">About Us</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="btn apptm" href="{% url 'index' %}">Appointment</a>
+          </li>
+        </ul>
+        <div class="signin text-white mt-2">
+          <p><strong><a href="{% url 'loggin' %}" class="signin text-dark">Sign In||</a><a href="{% url 'signup' %}" class="signin text-dark">Sign Up</a></strong></p>
+          <p></p>
+        </div>
+      </div>
+    </nav>
+    <div class="text text-center">
+      <p class="text text-white mt-3">THANK YOU</p>
+      <h1 class="shop-text"><strong>Thanks For Your Patronage</strong></h1>
+    </div>
+  </div>
+</div>
+  
+{% endblock banner %}
+
+<!-- content section -->
+{% block content %}
+<div class="thankyou-page mt-5 pt-5">
+  <div class="container mt-5">
+    <div class="container-fluid">
+      <div class="thankyou-summary text-center mx-auto bg-light w-100">
+        <div class="thankyou pt-4">
+          <h4 class="anak">Your payment was successful</h4>
+          <hr>
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Laborum expedita ea odit ex autem nobis consectetur voluptate 
+            cupiditate quaerat ipsum.
+          </span>
+          <div class="cart-total d-flex container mt-3 pb-4">
+            <a href="{% url 'index' %}" class="btn im w-25 mx-auto">Home</a>
+            <a href="{% url 'pharmacy' %}" class="btn mi w-25 mr-auto">Pharmacy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+
+
+<!-- footer content -->
+{% block footer %}
+<br><br><br><br>
+  {% include 'footer.html' %}
+{% endblock footer %}

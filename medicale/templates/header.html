@@ -1,0 +1,54 @@
+
+<ul class="nav nav-justified sticky-top root-nav" style="height: 3rem;">
+  
+  <li class="nav-item">
+    <a class="nav-link active text-white" id="to-p" href="tel:08139315800"><i class="fa-solid fa-phone"></i> 08139315800</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-white" id="to-p" href="mailto: mdpeter28@gmail.com"><i class="fa-solid fa-paper-plane"></i> mdpeter28@gmail.com</a>
+  </li>
+{% if user.is_authenticated %}
+  <li class="nav-item d-flex">
+    <a class="nav-link text-white top_" href="{% url 'dashboard' %}">Dashboard</a>
+    <!-- dropdown for extra link on the header -->
+    <div class="dropdown">
+      <button class="btn btn-transparent dropdown-toggle text-white pt-2" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <strong>Welcome</strong> {{user.last_name.title}}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item head-drop" href="{% url 'recovery' %}">Password Reset</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item head-drop" href="{% url 'prescription' %}">Prescription</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item head-drop" href="{% url 'loggout' %}"><i class=" fas fa-key mt-2 text-dark"></i>Logout</a>
+      </div>
+    </div> 
+    <a href="{% url 'cart' %}" class="nav-link text-white top"><i class="fas fa-shopping-cart fa-1x" style="text-decoration: none;color: #5fdec4;font-size: 1.3rem;"></i>
+      {% if cartcount > 0 %}
+        <span class="bucket">{{cartcount}}</span>
+      {% else %}
+      <span class="bucket">0</span>
+      {% endif %}
+    </a>
+  </li>
+{% else %}
+  <li class="nav-item d-flex">
+    <a class="nav-link text-white top_" href="{% url 'signup' %}">Sign Up</a><a class="nav-link text-white top" href="{% url 'loggin' %}">Sign In</a>
+  </li>
+{% endif %}
+    
+
+</ul>
+
+
+
+{% if messages %}
+  {% for item in messages %}
+    <div class="alert mb-0 sticky-top alert-dismissible fade show" role="alert">
+      {{item}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  {% endfor %}
+{% endif %}

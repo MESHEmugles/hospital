@@ -1,0 +1,557 @@
+{% extends "base.html" %}
+
+
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- title section -->
+{% block title %} | Home{% endblock title %}
+
+
+<!-- upper header section -->
+{% block header %}
+  {% include "header.html" %}
+{% endblock header %}
+
+
+<!-- banner section -->
+{% block banner %}
+  {% include "banner.html" %}
+{% endblock banner %}
+
+<!--content -->
+{% block content %}
+  <!-- first content -->
+  <div class="first-content" id="about">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm ">
+            <div class="img"></div>
+          <!-- <img src="/image/slider_2.jpg" class="rounded" width="400" height="600"> -->
+        </div>
+        <div class="col-12 col-sm my-auto write-up">
+          <p class="med"><strong>We Are <span class="meds">MEDICALE</span> A Medical Clinic</strong></p>
+          <p class="mid text-muted w-100">A small river named Duden flows by their place and supplies 
+            it with the necessary regelialia. It is a paradisematic country,
+            in which roasted parts of sentences fly into your mouth. It is a 
+            paradisematic country, in which roasted parts of sentences fly 
+            into your mouth.
+          </p>
+
+          <div class="frist-cont d-flex">
+            <button class="sec1 mt-2"><a href="{% url 'newappoint' %}" class="btn">Appointment</a></button>
+            <button class="sec2 mt-2 ml-2"><a href="{% url 'contact_us' %}" class="btn">Contact Us</a></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- second content -->
+  <div class="second-content pb-5 h-100">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-lg-2">
+        <div class="col-lg-7">
+          <br> &nbsp;
+          <h2 class="our mt-4 pt-4">Our Services</h2>
+          <div class="container">
+            <div class="row row-cols-1 row-cols-md-2 pt-5">
+              <div class="col d-flex flex-nowrap pb-3">
+                <img src="{% static '' %}image/inlineicons.com_154276_bus-svg-icon-24_.svg" class="rounded-circle" height="60" width="60">
+                &nbsp;
+                <div class="small-writ pl-2">
+                  <span class="h4 pb-2" id="span">Emergency Service</span>
+                  <p class="">A small river named Duden flows by their 
+                    place and supplies it 
+                    with the necessary 
+                    regelialia.
+                  </p>
+                </div>
+              </div>
+              <div class="col d-flex flex-nowrap">
+                <img src="{% static '' %}image/inlineicons.com_33772_medical-doctor-svg-icon-3_.svg" class="rounded-circle" height="60" width="60">
+                &nbsp;
+                <div class="small-writ pl-2">
+                  <span class="h4 pb-2">Qualified Doctors</span>
+                  <p class="">A small river named 
+                    Duden flows by their 
+                    place and supplies it 
+                    with the necessary 
+                    regelialia.
+                  </p>
+                </div>
+              </div>
+              <div class="col d-flex flex-nowrap">
+                <img src="{% static '' %}image/inlineicons.com_33647_stethoscope-svg-icon-7_.svg" class="rounded-circle" height="60" width="60">
+                &nbsp;
+                <div class="small-writ pl-2">
+                  <span class="h4 pb-2">Outdoors Checkup</span>
+                  <p class="">A small river named Duden flows by their 
+                    place and supplies it 
+                    with the necessary 
+                    regelialia.
+                  </p>
+                </div>
+              </div>
+              <div class="col d-flex flex-nowrap">
+                <img src="{% static '' %}image/inlineicons.com_22455_medical-assistance-24-hours-svg-icon_.svg" class="rounded-circle" height="60" width="60">
+                &nbsp; &nbsp;
+                <div class="small-writ pl-2">
+                  <span class="h4 pb-2">24 Hours Service</span>
+                  <p class="">A small river named Duden flows by their 
+                    place and supplies it 
+                    with the necessary 
+                    regelialia.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-12 col-lg-5">
+          <div class="pb-5 rounded small-form" data-aos="zoom-in" data-aos-duration="3000">
+            <div class="talk text-center pt-5 mt-5">
+              <h4><b>Our working hours</strong></h4>
+              <span>It is a long established fact that a reader will</span>
+            </div>
+            <div class="date-time m-5 w-100">
+              <p>
+                <span class="">Monday - Wednesday: </span>
+                <small style="margin-left: 2.5rem;" id="cards"> 7:00am - 11:00pm</small>
+              </p>
+              <p >
+                <span class="">Thursday - Friday: </span>
+                <small style="margin-left: 5rem;" id="cards1"> 7:00am - 11:00pm</small>
+              </p>
+              <p>
+                <span class="">Saturday: </span>
+                <small style="margin-left: 9rem;" id="cards2"> 10:00am - 11:00pm</small>
+              </p>
+              <p>
+                <span class="">Sunday: </span>
+                <small style="margin-left: 10rem;" id="cards3"> 1:00pm - 5:00pm</small>
+              </p>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- third content -->
+  <div class="prefoot h-100" >
+    <div class="semifoot text-center pt-5" style="height: 26rem">
+      <h1 class="y mt-5 pt-5" data-aos="fade-down" data-aos-duration="3000"><strong>Your Health is Our Priority</strong></h1>
+      <p data-aos="fade-down" data-aos-duration="3000">We can manage your dream building A small river named Duden flows by their place</p>
+      <button class="store" data-aos="fade-up" data-aos-duration="3000"><a href="{% url 'pharmacy' %}" class="btn">Go to Store</a></button>
+    </div>
+  </div>
+
+  <!-- forth content -->
+  <div class="forth-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="img-forth h-100" data-aos="zoom-in-right" data-aos-duration="3000"></div>
+        </div>
+        <div class="col-sm-12 col-lg-8">
+          <div class="grid-container gride" data-aos="zoom-in-up" data-aos-duration="3000">
+            <div class="grid-item grid-item1 text-center gridd" id="gridd">
+              <img src="{% static '' %}image/inlineicons.com_33647_stethoscope-svg-icon-7_.svg" class="rounded-circle mt-5" height="50" width="60">
+              <h3 class="t mt-3 pt-2"><a href="{% url 'department' %}" class="t text-decoration-none">Dental</a></h3>
+              <span class="sp">Far far away, behind the word mountains</span>
+            </div>
+            <div class="grid-item grid-item2 text-center gridd" id="gridd" >
+              <img src="{% static '' %}image/inlineicons.com_33647_stethoscope-svg-icon-7_.svg" class="rounded-circle mt-5" height="50" width="60">
+              <h3 class="t mt-3 pt-2"><a href="{% url 'department' %}" class="t text-decoration-none">Optical</a></h3>
+              <span class="sp">Far far away, behind the word mountains</span>
+            </div>
+            <div class="grid-item grid-item3 text-center gridd" id="gridd">
+              <img src="{% static '' %}image/inlineicons.com_33647_stethoscope-svg-icon-7_.svg" class="rounded-circle mt-5" height="50" width="60">
+              <h3 class="t mt-3 pt-2"><a href="{% url 'department' %}" class="t text-decoration-none">Paediatrics</a></h3>
+              <span class="sp">Far far away, behind the word mountains</span>
+            </div>
+            <div class="grid-item grid-item4 text-center gridd" id="gridd">
+              <img src="{% static '' %}image/inlineicons.com_33647_stethoscope-svg-icon-7_.svg" class="rounded-circle mt-5" height="50" width="60">
+              <h3 class="t mt-3 pt-2"><a href="{% url 'department' %}" class="t text-decoration-none">Gynecology</a></h3>
+              <span class="sp">Far far away, behind the word mountains</span>
+            </div>
+            <div class="grid-item grid-item5 text-center gridd" id="gridd" >
+              <img src="{% static '' %}image/inlineicons.com_33647_stethoscope-svg-icon-7_.svg" class="rounded-circle mt-5" height="50" width="60">
+              <h3 class="t mt-3 pt-2"><a href="{% url 'department' %}" class="t text-decoration-none">Surgical</a></h3>
+              <span class="sp">Far far away, behind the word mountains</span>
+            </div>
+            <div class="grid-item grid-item6 text-center gridd" id="gridd">
+              <img src="{% static '' %}image/inlineicons.com_33647_stethoscope-svg-icon-7_.svg" class="rounded-circle mt-5" height="50" width="60">
+              <h3 class="t mt-3 pt-2"><a href="{% url 'department' %}" class="t text-decoration-none">Laboratory</a></h3>
+              <span class="sp">Far far away, behind the word mountains</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- fifth content -->
+  <div class="fifth-content h-100 pb-5" style="background: rgba(245, 245, 245, 0.486);">
+    <div class="container-fluid"><br><br><br><br>
+      <div class="fifth-writings mx-auto text-center" id="Blog">
+        <h1>Gets Every Single Updates Here</h1>
+        <span>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</span>  
+      </div>
+
+      <div class="container mt-5 pt-4">
+        <div class="col-12">
+          <div class="card-deck mx-auto mb-4">
+            <div class="card border-0 blog-card">
+              <img src="{% static '' %}image/new5.jpeg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="j d-flex">
+                  <small><a href="" class="j text-decoration-none">JUNE 9, 2019</a></small>&nbsp;
+                  <small><a href="" class="j text-decoration-none">ADMIN</a></small>&nbsp;
+                  <small><a href="" class="j text-decoration-none"><i class="fas fa-message"></i> 3</a></small>
+                </div>
+                <h5 class="card-title"></h5>
+                <h4 class="card-text"><a href="#" class="crd text-decoration-none">Scary Thing That You Don’t Get Enough Sleep</a></h4>
+                <small class="text-muted mb-5">Far far away, behind the word mountains, far 
+                  from the countries Vokalia and Consonantia, 
+                  there live the blind texts.
+                  <a href="#" class="text-decoration-none w-50 j">Read More...</a>
+                </small>
+              </div>
+            </div>
+            <div class="card border-0 blog-card">
+              <img src="{% static '' %}image/image_2.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="j d-flex">
+                  <small><a href="" class="j text-decoration-none">JUNE 9, 2019</a></small>&nbsp;
+                  <small><a href="" class="j text-decoration-none">ADMIN</a></small>&nbsp;
+                  <small><a href="" class="j text-decoration-none"><i class="fas fa-message"></i> 3</a></small>
+                </div>
+                <h5 class="card-title"></h5>
+                <h4 class="card-text"><a href="#" class="crd text-decoration-none">Scary Thing That You Don’t Get Enough Sleep</a></h4>
+                <small class="text-muted mb-5">Far far away, behind the word mountains, far 
+                  from the countries Vokalia and Consonantia, 
+                  there live the blind texts.
+                  <a href="#" class="text-decoration-none w-50 j">Read More...</a>
+                </small>
+              </div>
+            </div>
+            <div class="card border-0 blog-card">
+              <img src="{% static '' %}image/new6.jpeg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="j d-flex">
+                  <small><a href="" class="j text-decoration-none">JUNE 9, 2019</a></small>&nbsp;
+                  <small><a href="" class="j text-decoration-none">ADMIN</a></small>&nbsp;
+                  <small><a href="" class="j text-decoration-none"><i class="fas fa-message"></i> 3</a></small>
+                </div>
+                <h5 class="card-title"></h5>
+                <h4 class="card-text"><a href="#" class="crd text-decoration-none">Scary Thing That You Don’t Get Enough Sleep</a></h4>
+                <small class="text-muted mb-5">Far far away, behind the word mountains, far 
+                  from the countries Vokalia and Consonantia, 
+                  there live the blind texts.
+                  <a href="#" class="text-decoration-none w-50 j">Read More...</a>
+                </small>
+              </div>
+            </div>
+          </div>
+          <div class="card-deck mx-auto">
+            <div class="card border-0 blog-card">
+              <img src="{% static '' %}image/new10.jpeg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="j d-flex">
+                  <small><a href="" class="j text-decoration-none">JUNE 9, 2019</a></small>&nbsp;
+                  <small><a href="" class="j text-decoration-none">ADMIN</a></small>&nbsp;
+                  <small><a href="" class="j text-decoration-none"><i class="fas fa-message"></i> 3</a></small>
+                </div>
+                <h5 class="card-title"></h5>
+                <h4 class="card-text"><a href="#" class="crd text-decoration-none">Scary Thing That You Don’t Get Enough Sleep</a></h4>
+                <small class="text-muted mb-5">Far far away, behind the word mountains, far 
+                  from the countries Vokalia and Consonantia, 
+                  there live the blind texts.
+                  <a href="#" class="text-decoration-none w-50 j">Read More...</a>
+                </small>
+              </div>
+            </div>
+            <div class="card border-0 blog-card">
+              <img src="{% static '' %}image/image_5.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="j d-flex">
+                  <small><a href="" class="j text-decoration-none">JUNE 9, 2019</a></small>&nbsp;
+                  <small><a href="" class="j text-decoration-none">ADMIN</a></small>&nbsp;
+                  <small><a href="" class="j text-decoration-none"><i class="fas fa-message"></i> 3</a></small>
+                </div>
+                <h5 class="card-title"></h5>
+                <h4 class="card-text"><a href="#" class="crd text-decoration-none">Scary Thing That You Don’t Get Enough Sleep</a></h4>
+                <small class="text-muted mb-5">Far far away, behind the word mountains, far 
+                  from the countries Vokalia and Consonantia, 
+                  there live the blind texts.
+                  <a href="#" class="text-decoration-none w-50 j">Read More...</a>
+                </small>
+              </div>
+            </div>
+            <div class="card border-0 blog-card">
+              <img src="{% static '' %}image/new7.jpeg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <div class="j d-flex">
+                  <small><a href="" class="j text-decoration-none">JUNE 9, 2019</a></small>&nbsp;
+                  <small><a href="" class="j text-decoration-none">ADMIN</a></small>&nbsp;
+                  <small><a href="" class="j text-decoration-none"><i class="fas fa-message"></i> 3</a></small>
+                </div>
+                <h5 class="card-title"></h5>
+                <h4 class="card-text"><a href="#" class="crd text-decoration-none">Scary Thing That You Don’t Get Enough Sleep</a></h4>
+                <small class="text-muted mb-5">Far far away, behind the word mountains, far 
+                  from the countries Vokalia and Consonantia, 
+                  there live the blind texts.
+                  <a href="#" class="text-decoration-none w-50 j">Read More...</a>
+                </small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- sixth content -->
+  <div class="sixth-content pt-5"><br><br><br><br>
+    <div class="container-fluid">
+      <div class="sixth-writings text-center text-white">
+        <p>READ TESTIMONIALS</p>
+        <h1>Our Patients Says</h1>
+      </div>
+      &nbsp; &nbsp; &nbsp;
+      <div class="caro pt-5 mt-5">
+        <div id="carouselExampleIndicators" class="carousel slide pb-5" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active sixth-content1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1" class="sixth-content1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2" class="sixth-content1"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="container">
+                <div class="card-deck mx-auto mb-4">
+                  <div class="card border-0 text-center bg-transparent">
+                    <img src="{% static '' %}image/person_1.jpg" class="rounded-circle mx-auto" height="60" width="60">
+                    <div class="card-body">
+                      <h5 class="card-title"></h5>
+                      <p class="name">Far far away, behind the word mountains, far 
+                        from the countries Vokalia and Consonantia, 
+                        there live the blind texts.
+                      </p>
+                      <p class="nam">Jeff Freshman</p>
+                      <small class="q text-white">PATIENTS</small>
+                    </div>
+                  </div>
+                  <div class="card border-0 text-center bg-transparent">
+                    <img src="{% static '' %}image/person_2.jpg" class="rounded-circle mx-auto" height="60" width="60">
+                    <div class="card-body">
+                      <h5 class="card-title"></h5>
+                      <p class="name">Far far away, behind the word mountains, far 
+                        from the countries Vokalia and Consonantia, 
+                        there live the blind texts.
+                      </p>
+                      <p class="nam">Jeff Freshman</p>
+                      <small class="q text-white">PATIENTS</small>
+                    </div>
+                  </div>
+                  <div class="card border-0 text-center bg-transparent">
+                    <img src="{% static '' %}image/person_3.jpg" class="rounded-circle mx-auto" height="60" width="60">
+                    <div class="card-body">
+                      <h5 class="card-title"></h5>
+                      <p class="name">Far far away, behind the word mountains, far 
+                        from the countries Vokalia and Consonantia, 
+                        there live the blind texts.
+                      </p>
+                      <p class="nam">Jeff Freshman</p>
+                      <small class="q text-white">PATIENTS</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <div class="card-deck mx-auto mb-4">
+                  <div class="card border-0 text-center bg-transparent">
+                    <img src="{% static '' %}image/person_3.jpg" class="rounded-circle mx-auto" height="60" width="60">
+                    <div class="card-body">
+                      <h5 class="card-title"></h5>
+                      <p class="name">Far far away, behind the word mountains, far 
+                        from the countries Vokalia and Consonantia, 
+                        there live the blind texts.
+                      </p>
+                      <p class="nam">Jeff Freshman</p>
+                      <small class="q text-white">PATIENTS</small>
+                    </div>
+                  </div>
+                  <div class="card border-0 text-center bg-transparent">
+                    <img src="{% static '' %}image/person_2.jpg" class="rounded-circle mx-auto" height="60" width="60">
+                    <div class="card-body">
+                      <h5 class="card-title"></h5>
+                      <p class="name">Far far away, behind the word mountains, far 
+                        from the countries Vokalia and Consonantia, 
+                        there live the blind texts.
+                      </p>
+                      <p class="nam">Jeff Freshman</p>
+                      <small class="q text-white">PATIENTS</small>
+                    </div>
+                  </div>
+                  <div class="card border-0 text-center bg-transparent">
+                    <img src="{% static '' %}image/person_1.jpg" class="rounded-circle mx-auto" height="60" width="60">
+                    <div class="card-body">
+                      <h5 class="card-title"></h5>
+                      <p class="name">Far far away, behind the word mountains, far 
+                        from the countries Vokalia and Consonantia, 
+                        there live the blind texts.
+                      </p>
+                      <p class="nam">Jeff Freshman</p>
+                      <small class="q text-white">PATIENTS</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="container">
+                <div class="card-deck mx-auto mb-4">
+                  <div class="card border-0 text-center bg-transparent">
+                    <img src="{% static '' %}image/person_2.jpg" class="rounded-circle mx-auto" height="60" width="60">
+                    <div class="card-body">
+                      <h5 class="card-title"></h5>
+                      <p class="name">Far far away, behind the word mountains, far 
+                        from the countries Vokalia and Consonantia, 
+                        there live the blind texts.
+                      </p>
+                      <p class="nam">Jeff Freshman</p>
+                      <small class="q text-white">PATIENTS</small>
+                    </div>
+                  </div>
+                  <div class="card border-0 text-center bg-transparent">
+                    <img src="{% static '' %}image/person_3.jpg" class="rounded-circle mx-auto" height="60" width="60">
+                    <div class="card-body">
+                      <h5 class="card-title"></h5>
+                      <p class="name">Far far away, behind the word mountains, far 
+                        from the countries Vokalia and Consonantia, 
+                        there live the blind texts.
+                      </p>
+                      <p class="nam">Jeff Freshman</p>
+                      <small class="q text-white">PATIENTS</small>
+                    </div>
+                  </div>
+                  <div class="card border-0 text-center bg-transparent">
+                    <img src="{% static '' %}image/person_1.jpg" class="rounded-circle mx-auto" height="60" width="60">
+                    <div class="card-body">
+                      <h5 class="card-title"></h5>
+                      <p class="name">Far far away, behind the word mountains, far 
+                        from the countries Vokalia and Consonantia, 
+                        there live the blind texts.
+                      </p>
+                      <p class="nam">Jeff Freshman</p>
+                      <small class="q text-white">PATIENTS</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- seventh content -->
+  <div class="seventh-content">
+    <div class="con">
+      <div class="seventh-writings text-center pt-5 pb-5">
+        <h1>Important Details</h1>
+        <small>Lorem ipsum dolor sit amet consectetur.</small>
+      </div>
+
+      <div class="grid-content sev-grid">
+        <div class="grid-item text-center sev-item text-white" id="sev1">
+          <i class="fas fa-users fa-3x mb-2"></i>
+          <p>MEDICAL <span class="a">INSURANCE</span></p>
+          <small>Suspendisse potenti. Maecenas dapibus ac tellus sed <br> pulvinar 
+            stibulum bib.
+          </small>
+          <p><a href="{% url 'index' %}" class="btn mt-4 more">More Information</a></p>
+        </div>
+        <div class="grid-item text-center sev-item text-white" id="sev2">
+          <i class="fa-solid fa-folder fa-3x mb-2"></i>
+          <p>MEDICAL <span class="a">RECORDS</span></p>
+          <small>Suspendisse potenti. Maecenas dapibus ac tellus sed <br> pulvinar 
+            stibulum bib.
+          </small>
+          <p><a href="{% url 'profile' %}" class="btn mt-4 more">See Your Records</a></p>
+        </div>
+        <div class="grid-item text-center sev-item text-white" id="sev3">
+          <i class="fas fa-users fa-3x mb-2"></i>
+          <p>ONLINE BILL <span class="a">PAY</span></p>
+          <small>Suspendisse potenti. Maecenas dapibus ac tellus sed <br> pulvinar 
+            stibulum bib.
+          </small>
+          <p><a href="{% url 'index' %}" class="btn mt-4 more">Pay Bill Now</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- eight content -->
+  <div class="eight-content pt-5 mt-5">
+    <div class="eight-writings text-center">
+      <h1>Contact Us</h1>
+      <p class="cv text-muted">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+    </div>
+    <div class="container pt-5 mt-2">
+      <div class="card-deck">
+        <div class="card border-0 text-center pt-2 fomp" style="background-color: whitesmoke;">
+          <button disabled="disabled" class="tr mx-auto border-radius-3 rounded-circle bg-white border-0" style="height: 6rem;width: 6rem"><i class="fa-solid fa-signs-post fa-1x fomt"></i></button>
+          <!-- <img src="/image/person_2.jpg" class="rounded-circle mx-auto" height="60" width="60"> -->
+          <div class="card-body pt-5">
+            <h5 class="card-title">ADDRESS</h5>
+            <p class="card-text pt-3 mb-3"><small class="text-muted">198 West 21th Street, Suite 721 New York NY 10016</small></p>
+          </div>
+        </div>
+        <div class="card border-0 text-center pt-2 fomp" style="background-color: whitesmoke;height: 20rem">
+          <button disabled="disabled" class="tr mx-auto border-radius-3 rounded-circle bg-white border-0" style="height: 6rem;width: 6rem"><i class="fa-solid fa-phone fa-1x fomt"></i></button>
+          <div class="card-body pt-5">
+            <h5 class="card-title">CONTACT NUMBER</h5>
+            <p class="card-text pt-2 mb-3"><a href="" class="w text-dark text-decoration-none">+ 1235 2355 98</a></p>
+          </div>
+        </div>
+        <div class="card border-0 text-center pt-2 fomp" style="background-color: whitesmoke;height: 20rem">
+          <button disabled="disabled" class="tr mx-auto border-radius-3 rounded-circle bg-white border-0" style="height: 6rem;width: 6rem"><i class="fa-solid fa-paper-plane fa-1x fomt"></i></button>
+          <div class="card-body pt-5">
+            <h5 class="card-title">EMAIL ADDRESS</h5>
+            <p class="card-text pt-2 mb-3"><a href="" class="w text-dark text-decoration-none">info@yoursite.com</a></p>
+          </div>
+        </div>
+        <div class="card border-0 text-center pt-2 fomp" style="background-color: whitesmoke;height: 20rem">
+          <button disabled="disabled" class="tr mx-auto border-radius-3 rounded-circle bg-white border-0" style="height: 6rem;width: 6rem"><i class="fa-solid fa-earth-africa fa-1x fomt"></i></button>
+          <div class="card-body pt-5">
+            <h5 class="card-title">WEBSITE</h5>
+            <p class="card-text pt-2 mb-3"><a href="" class="w text-dark text-decoration-none">yoursite.com</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="eight-bottom d-flex justify-content-center pt-4">
+      <a href="{% url 'contact_us' %}" class="btn border-0">Fast Reach Us Here</a>
+    </div>
+  </div>
+
+{% endblock content %}
+
+
+
+
+<!-- footer content -->
+{% block footer %}
+<br><br><br><br>
+  {% include "footer.html" %}
+{% endblock footer %}

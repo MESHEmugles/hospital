@@ -1,0 +1,494 @@
+{% extends "base.html" %}
+
+
+{% load static %}
+{% load static %}
+{% load humanize %}
+
+
+<!-- title section -->
+{% block title %} | Dashboard{% endblock title %}
+
+
+<!-- upper header section -->
+{% block header %}
+  {% include "header.html" %}
+{% endblock header %}
+
+
+<!-- banner section -->
+{% block banner %}
+<div class="edit-profile mb-3 ml-5 pl-5">
+    <div class="container-flui">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent container">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn anaks" href="{% url 'newappoint' %}">Make Appointment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn luk ml-2" href="{% url 'pharmacy' %}">Search Prescription</a>
+                    </li>
+                </ul>
+    
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-white border-0 my-2 my-lg-0 notice" data-toggle="modal" data-target=".bd-example-modal-sm">
+                    {% if notify %}
+                        <i class="fa-solid fa-bell anak">
+                            <div class="spinner-grow spinner-grow-sm text-primary pt-2" role="status" style="margin-left: -1rem;">
+                                <span class="sr-only"></span>
+                            </div>
+                        </i>
+                    {% else %}
+                        <i class="fa-solid fa-bell text-primary"></i>
+                    {% endif %} 
+                </button>
+    
+                <!-- Modal -->
+                <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                {% if notify %}
+                                    {% for items in notify %}
+                                        <div class=" d-flex mb-3"><a href="" class="image text-decoration-none">
+                                            <img src="{{items.image.url}}" class="image-fluid" height="50" width="50">
+                                            <div class="til ml-3">
+                                                <span class="card-title"><a href="#CollapseExample" data-toggle="collapse" class="dir text-dark text-decoration-none" style="font-size: 1rem;"><strong>{{items.topic}}</strong></a></span>
+                                                <div class="collapse" id="CollapseExample">
+                                                    <div class="prod card-body">
+                                                        {{items.notification_detail}}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <small class="card-text text-muted">{{items.date}}</small>
+                                            </div>
+                                        </a></div>
+                                    {% endfor %}
+
+                                {% else %}
+
+                                    <P>You have no pending notification</P>                                    
+
+                                {% endif %} 
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn mi" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn im">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- small dropdown beside the notification -->
+                <div class="btn-group mr-3 prof-group">
+                    <button class="btn btn-white btn-sm dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span>{{user.last_name.title}}</span>
+                        <img src="{{profile.image.url}}" class="image-fluid" height="30" width="30">
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item head-drop" href="{% url 'profile' %}">Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item head-drop" href="#">Inbox</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item head-drop" href="{% url 'loggout' %}">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+ 
+    </div>
+</div>
+{% endblock banner %}
+
+<!--content -->
+{% block content %}
+<div class="homed">
+    <a class="navbar-brand anak" href="{% url 'index' %}"><h2><strong> M<span class="log">E</span>D<span class="log">I</span>C<span class="log">A</span>L</strong></h2></a> 
+</div>
+<div class="container-flui">
+    <div class="row justify-content-start">
+        <div class="col-12 col-md-3">
+            <nav class="navbar navbar-expand-sm navbar-light bg-transparent nav-edit">
+                <a class="navbar-toggler border-0" type="button" data-toggle="collapse" href="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <span class="navbar-toggler-icon anak rounded" style="font-size: 1rem;"></span>
+                    <!-- <span><strong>SideBar</strong></span> -->
+                </a>
+                <a class="navbar-brand mb-5 pb-5 mt-4 anak" id="home" href="{% url 'index' %}"><h2><strong> M<span class="log">E</span>D<span class="log">I</span>C<span class="log">A</span>L</strong></h2></a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="display: inline-block;">
+                        <a class="nav-link mb-3 link-edited" href="#item-1">Dashboard</a>
+                        <a class="nav-link mb-3 profdit" href="{% url 'proedit' %}">Update</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'cart' %}">Cart</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'pharmacy' %}">Shop</a>
+                        <a class="nav-link mb-3 profdit" href="{% url 'profile' %}"> Profile </a>
+                        <a class="nav-link mb-3 profdit" href="{% url 'recovery' %}">Change Password</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'newappoint' %}">Appointment</a>
+                        <a class="nav-link mb-3 link-edit" href="{% url 'prescription' %}">Prescription</a>
+                        <a class="nav-link text-muted link-editt" href="#"><small>Help And Support</small></a>
+                        <a class="nav-link text-muted link-edite" href="#">Preferences</a>
+                    </ul>
+                </div>
+            </nav>                                  
+        </div>
+        <div class="col-12 col-md-9 profile-col">
+            <div data-spy="scroll" data-target="#navbar-example3" data-offset="0">
+                <p id="item-1">
+                    <div class="patient-edit">
+                        <div class="container-flui">
+                            <div class="">
+                                <div class="col-12 bg-light table-responsive pb-5">
+                                    <div class="container pt-4">
+                                        <div class="row">
+                                            <div class="col-sm-8 his-back">
+                                                <div class="his-name row" data-aos="fade-right" data-aos-duration="3000">
+                                                    <div class="col-sm-8 align-self-center text-white text-center cuul" data-aos="zoom-in" data-aos-duration="3000">
+                                                        <p><strong>Welcome Back</strong> {{profile.fullname|title}}</p>
+                                                        {% if general %}
+                                                            {% for items in general %}
+                                                                <span>{{items.write_ups}}</span>
+                                                            {% endfor %}
+                                                        {% else %}
+                                                            <span>Your Current Histories here</span>
+                                                    
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="col-sm-4 anodi">
+                                                    </div>
+                                                </div>              
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="card his-img w-100" data-aos="fade-right" data-aos-duration="3000">
+                                                    <div class="card-body">
+                                                        <img src="{{profile.image.url}}" class="rounded-circle mt-1" alt="click to upload your image here" height="70" width="70">
+                                                        <h5 class="card-title pt-3" data-aos="fade-right" data-aos-duration="3000"><span>{{profile.marital_status}} {{profile.fullname|title}}</span></h5>
+                                                        <h6 class="card-subtitle mb-2 pt-2" data-aos="fade-right" data-aos-duration="2500">{{profile.email}}</h6>
+                                                        <h6 class="card-subtitle mb-2 pt-2" data-aos="fade-right" data-aos-duration="2000">{{profile.phone_number}}</h6>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box-items">
+                                        <h3 class="prod pt-3 pb-3"><strong>General Information</strong></h3>
+                                        <hr>
+                                        <div class="semi-boxes">
+                                            <div class="boxes1 text-center w-100  pt-3 pb-3" data-aos="fade-down" data-aos-duration="3000">
+                                                <img src="{% static '' %}image/pt-dashboard-01.png" alt="" class="pt-2"><br>
+                                                <p><strong>Heart Rate</strong></p>                                               
+                                                {% if general %}
+                                                    {% for items in general %}
+                                                        <span class="">{{items.heart}}bpm</span>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <span>0 bpm</span>                                                 
+                                                {% endif %}
+                                            </div>
+                                            <div class="boxes text-center w-100  pt-2" data-aos="fade-down" data-aos-duration="2500">
+                                                <img src="{% static '' %}image/pt-dashboard-02.png" alt="" class="pt-2"><br>
+                                                <p><strong>Body Temperature</strong></p>
+                                                {% if general %}
+                                                    {% for items in general %}
+                                                        <span class="">{{items.body}}c</span>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <span>0 c</span>                                           
+                                                {% endif %}                                          
+                                            </div>
+                                            <div class="boxes1 text-center w-100  pt-2" data-aos="fade-down" data-aos-duration="2000">
+                                                <img src="{% static '' %}image/pt-dashboard-03.png" alt="" class="pt-2"><br>
+                                                <p><strong>Glucose Level</strong></p>
+                                                {% if general %}
+                                                    {% for items in general %}
+                                                        <span class="">{{items.glucose}}</span>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <span>0 - 0</span>                                           
+                                                {% endif %}
+                                            </div>
+                                            <div class="boxes text-center w-100  pt-2" data-aos="fade-down" data-aos-duration="1500">
+                                                <img src="{% static '' %}image/pt-dashboard-04.png" alt="" class="pt-2"><br>
+                                                <p><strong>Blood Pressure</strong></p>
+                                                {% if general %}
+                                                    {% for items in general %}
+                                                        <span class="">{{items.blood}} mg/dl</span>
+                                                    {% endfor %}
+                                                {% else %}
+                                                    <span>0 mg/dl</span>                                      
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion mt-4" id="accordionExample">
+                                        <div class="mb-3">
+                                            <div class="row row-cols-1 row-cols-md-4 dashed">
+                                                <h2 class="mb-0" id="headingOne">
+                                                    <a class="text-decoration-none h6 dashes" type="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        Appointment
+                                                    </a>
+                                                </h2>
+
+                                                <h2 class="mb-0" id="headingTwo">
+                                                    <a class="text-decoration-none h6 collapsed dashes" type="button" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                        Prescription
+                                                    </a>
+                                                </h2>
+
+                                                <h2 class="mb-0" id="headingThree">
+                                                    <a class="text-decoration-none h6 collapsed dashes" type="button" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                        Medical Records
+                                                    </a>
+                                                </h2>
+
+                                                <h2 class="mb-0" id="headingFour">
+                                                    <a class="text-decoration-none h6 collapsed dashes" type="button" data-toggle="collapse" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                        Billings
+                                                    </a>
+                                                </h2>
+                                            </div>
+                                        </div>
+
+                                        <div class="card bg-transparent">
+                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                <hr>
+                                                <div class="card-body">
+                                                    <table class="table w-100 table-responsive-sm ">
+                                                        <thead class="tabhead">
+                                                            <tr>
+                                                                <th scope="col" class="pris-table">services</th>
+                                                                <th scope="col" class="pris-table ml-2">Booking Date</th>
+                                                                <th scope="col" class="pris-table ml-2">Amount</th>
+                                                                <th scope="col" class="pris-table ml-2">Appt Date</th>
+                                                                <th scope="col" class="pris-table ml-2">Follow Up</th>
+                                                                <th scope="col" class="pris-table ml-2">Status</th>
+                                                                <th scope="col" class="pris-table ml-2">Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                    
+                                                            {% if appointy %}
+                                                                {% for items in appointy %}
+                                                                    <tr>
+                                                                        <th scope="col" class="pris-content">
+                                                                            <small class="doc anak">{{items.services}}</small>
+                                                                        </th>
+                                                                        <th scope="row" class="pris-content"><small>{{items.apptdate}}</small></th>
+                                                                        <th scope="col" class="pris-content"><small>${{items.price}}</small></th>
+                                                                        <th scope="col" class="pris-content"><small>{{items.appt_time}}</small></th>
+                                                                        <th scope="col" class="pris-content"><small>{{items.follow_up}}</small></th>
+                                                                        <th scope="col" class="pris-content">
+                                                                            <h4><span class="badge badge-transparent text-danger" style="border: 1px solid red;">{{items.status}}</span></h4>
+                                                                        </th>
+                                                                        <th scope="col" class="pris-content"><small>
+                                                                            <a href=""><i class="fas fa-eye anak"></i></a>
+                                                                            <a href=""><i class="fas fa-print ml-2 anak"></i></a>
+                                                                            <!-- <form action="{% url 'remove_prescription' %}" method="POST">
+                                                                            {% csrf_token %}
+                                                                                <input type="hidden" name="deleteprescrip" value="{{items.id}}">
+                                                                                <button type="submit" class=" border-0 bg-transparent text-primary"><i class=" fas fa-trash"></i></button>
+                                                                            </form> -->
+                                                                        </small></th>
+                                                                    </tr>                                                  
+                                                                {% endfor %}
+                                                            {% else %}
+                                                                <span class="text-center">Your appointment history will be displayed here</span>
+                                                                
+                                                            {% endif %}
+                                                                
+                                                        </tbody>
+                                                    </table>  
+                                                </div>
+                                            </div>
+                    
+                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                                <hr>
+                                                <div class="card-body">
+                                                    <table class="table w-100 table-responsive-sm">
+                                                        <thead class="tabhead">
+                                                            <tr>
+                                                                <th scope="col" class="pris-table">#/ID</th>
+                                                                <th scope="col" class="pris-table ml-2">Title</th>
+                                                                <th scope="col" class="pris-table ml-2">Created by</th>
+                                                                <th scope="col" class="pris-table ml-2">Date</th>
+                                                                <th scope="col" class="pris-table ml-2">Diseases</th>
+                                                                <th scope="col" class="pris-table ml-2">Content</th>
+                                                                <th scope="col" class="pris-table ml-2">Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {% if prescripy %}
+                                                                {% for items in prescripy %}
+                                                                    <tr>
+                                                                        <th scope="row" class="pris-content" style="font-size: 1rem;"><small>{{items.prescrip_code}}</small></th>
+                                                                        <th scope="col" class="pris-content" style="font-size: 1rem;"><small>{{items.title}}</small></th>
+                                                                        <th scope="col" class="pris-content">
+                                                                            <img src="{{items.image.url}}" class="ml-3" height="30" width="30"><br>
+                                                                            <small class="doc text-primary" style="font-size: 1rem;">{{items.name_of_doc}}</small>
+                                                                        </th>
+                                                                        <th scope="col" class="pris-content" style="font-size: 1rem;"><small>{{items.created}}</small></th>
+                                                                        <th scope="col" class="pris-content">
+                                                                            <h4><span class="badge badge-transparent text-danger" style="border: 1px solid red;font-size: 1rem;">{{items.disease}}</span></h4>
+                                                                        </th>
+                                                                        <th scope="col" class="pris-content" style="font-size: 1rem;"><small>{{items.content}}</small></th>
+                                                                        <th scope="col" class="pris-content d-flex" style="font-size: 1rem;"><small>
+                                                                            <button type="submit" class="border-0 bg-transparent anak"><i class="fas fa-eye"></i></button>
+                                                                            <button type="submit" class="border-0 bg-transparent anak"><i class="fas fa-print ml-2"></i></button>
+                                                                            <!-- <form action="{% url 'remove_prescription' %}" method="POST">
+                                                                            {% csrf_token %}
+                                                                                <input type="hidden" name="deleteprescrip" value="{{items.id}}">
+                                                                                <button type="submit" class=" border-0 bg-transparent text-primary"><i class=" fas fa-trash"></i></button>
+                                                                            </form> -->
+                                                                            <!-- <a href=""><i class=" fas fa-trash ml-2"></i></a> -->
+                                                                        </small></th>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                            {% else %}
+                                                                <span class="text-center">Your Prescription history will be displayed here</span>
+                                                            {% endif %}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                                <hr>
+                                                <div class="card-body">
+                                                    <table class="table w-100 table-responsive-sm">
+                                                        <thead class="tabhead">
+                                                            <tr>
+                                                                <th scope="col" class="pris-table">#/ID</th>
+                                                                <th scope="col" class="pris-table ml-2">Date</th>
+                                                                <th scope="col" class="pris-table ml-2">Description</th>
+                                                                <th scope="col" class="pris-table ml-2">Attachment</th>
+                                                                <th scope="col" class="pris-table ml-2">Created</th>
+                                                                <th colspan="2" class="pris-table ml-5">Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                    
+                                                            {% if medical %}
+                                                                {% for item in medical %}
+                                                                    <tr>
+                                                                        <th scope="row" class="pris-content"><small>{{item.code}}</small></th>
+
+                                                                        <th scope="col" class="pris-content"><small>{{item.date}}</small></th>
+
+                                                                        <th scope="col" class="pris-content"><small>{{item.description}}</small></th>
+
+                                                                        <th scope="col" class="pris-content"><small>{{item.attachment}}</small></th>
+
+                                                                        <th scope="col" class="pris-content">
+                                                                            <img src="{{item.image.url}}" class="rounded-circle ml-3" height="30" width="30"><br>
+                                                                            <small class="doc text-primary">{{item.doctor_name}}</small>
+                                                                        </th>
+
+                                                                        <th colspan="2" class="pris-content ml-auto"><small>
+                                                                            <a href=""><i class="fas fa-eye anak"></i></a>
+                                                                            <a href=""><i class="fas fa-print ml-2 anak"></i></a>
+                                                                            <!-- <form action="{% url 'remove_prescription' %}" method="POST">
+                                                                            {% csrf_token %}
+                                                                                <input type="hidden" name="deleteprescrip" value="{{items.id}}">
+                                                                                <button type="submit" class=" border-0 bg-transparent text-primary"><i class=" fas fa-trash"></i></button>
+                                                                            </form> -->
+                                                                        </small></th>
+                                                                    </tr>                                                                
+                                                                  
+                                                                {% endfor %}
+                                                            {% else %}
+                                                                <span class="text-center">Your Medical Records will be displayed here</span>
+                                                            {% endif %}
+                                                                
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+                                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                                <hr>
+                                                <div class="card-body">
+                                                    <table class="table w-100 table-responsive-sm">
+                                                        <thead class="tabhead">
+                                                            <tr>
+                                                                <th scope="col" class="pris-table ml-4">Invoice No</th>
+                                                                <th scope="col" colspan="2" class="pris-table ml-2">Item</th>
+                                                                <th scope="col" class="pris-table ml-2">Amount</th>
+                                                                <th scope="col" colspan="2" class="pris-table ml-2">Paid On	</th>
+                                                                <th scope="col" class="pris-table ml-2">Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                                    
+                                                            {% if billings %}
+                                                                {% for items in billings %}
+                                                                    <tr>
+                                                                        <th scope="row" class="pris-content ml-4"><small>#INV-{{items.ordr_no}}</small></th>
+                                                                        <th scope="col" colspan="2" class="pris-content">
+                                                                            <small class="anak">{{items.things_bought}}</small>
+                                                                        </th>
+                                                                        <th scope="col" class="pris-content log"><small>${{items.total}}</small></th>
+                                                                        <th scope="col" colspan="2" class="pris-content"><small>{{items.paid_on}}</small></th>
+
+                                                                        <th scope="col" class="pris-content"><small>
+                                                                            <a href=""><i class="fas fa-eye anak"></i></a>
+                                                                            <a href=""><i class="fas fa-print ml-2 anak"></i></a>
+                                                                        </small></th>
+                                                                    </tr>                                                                   
+                                                                    
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                            
+                                                            {% if billing %}
+                                                                {% for item in billing %}
+                                                                    <tr>
+                                                                        <th scope="row" class="pris-content ml-4"><small>#INV-{{item.ordr_no}}</small></th>
+                                                                        <th scope="col" colspan="2" class="pris-content">
+                                                                            <small class="anak">{{item.things_bought}}</small>
+                                                                        </th>
+                                                                        <th scope="col" class="pris-content log"><small>${{item.price}}</small></th>
+                                                                        <th scope="col" colspan="2" class="pris-content"><small>{{item.paid_on}}</small></th>
+
+                                                                        <th scope="col" class="pris-content"><small>
+                                                                            <a href=""><i class="fas fa-eye anak"></i></a>
+                                                                            <a href=""><i class="fas fa-print ml-2 anak"></i></a>                                                            
+                                                                        </small></th>
+                                                                    </tr>                                                                  
+                                                                {% endfor %}
+                                                            {% else %}
+                                                                <span class="text-center">Your Billing history will be displayed here</span>                                                           
+                                                            {% endif %}
+                                                                
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+  
+<!-- footer content -->
+{% block footer %}
+<br><br><br><br>
+{% include "footer.html" %}
+{% endblock footer %}

@@ -1,0 +1,210 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- title section -->
+{% block title %} | Home | Appointment Summary{% endblock title %}
+
+
+<!-- upper header section -->
+{% block header %}
+  {% include "header.html" %}
+{% endblock header %}
+
+
+<!-- banner section -->
+{% block banner %}
+<div class="details-banner mb-5">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light container sml-nav">
+            <a class="navbar-brand text-primary" href="{% url 'index' %}"><strong> M<span class="log text-danger">E</span>D<span class="log text-danger">I</span>C<span class="log text-danger">A</span>L<span class="log text-danger">E</span></strong></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="nav snd-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'department' %}">Department</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Medicalist Shop
+                    </a>
+                    <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'pharmacy' %}">Pharmacy</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'profile' %}">Your Account</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'cart' %}">Cart</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'index' %}">Blog</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'pricing' %}">Pricing</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    About
+                    </a>
+                    <div class="dropdown-menu bg-primary" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'contact_us' %}">Contact Us</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'index' %}">About Us</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary" href="{% url 'index' %}">Appointment</a>
+                </li>
+                </ul>
+                <div class="signin text-white mt-2">
+                <p><strong><a href="{% url 'loggin' %}" class="signin text-dark">Sign In||</a><a href="{% url 'signup' %}" class="signin text-dark">Sign Up</a></strong></p>
+                <p></p>
+                </div>
+            </div>
+        </nav>
+        <div class="text text-center">
+            <p class="text text-white mt-3">Booking Summary</p>
+            <h1 class="shop-text"><strong>What you Booked</strong></h1>
+        </div>
+    </div>
+</div>
+<br><br>
+{% endblock banner %}
+
+<!-- content section -->
+{% block content %}
+<div class="container pt-5 pb-5">
+    <div class="row justify-content-between">
+        <div class="col-md-6">
+
+        </div>
+
+        <div class="col-md-6">
+            <span>Your Appointment Summary</span>
+            
+            {% if his %}
+                {% for item in his %}
+                    <div class="col">
+                        <label for="firstName"><strong>First Name</strong></label>
+                        <p>{{item.firstname}}</p>
+                    </div>
+                    <div class="col">
+                        <label for="LastName"><strong>Product</strong></label>
+                        <p>{{item.pricing}}</p>
+                    </div>
+                    <div class="col">
+                        <label for="Services"><strong>Services</strong></label>
+                        <p>{{item.ordr_no}}</p>
+                    </div>
+                  
+                {% endfor %}
+                
+            {% endif %}
+                
+            <div class="appt-summary">
+                <div class="col">
+                    <label for="PhoneNumber"><strong>Phone Number</strong></label>
+                    <p>{{his.itm_paid}}</p>
+                </div>
+                <div class="col">
+                    <label for="Email"><strong>Email</strong></label>
+                    <p>{{appoint.email}}</p>
+                </div>
+                <div class="col">
+                    <label for="Date"><strong>Date</strong></label>
+                    <p>{{appoint.apptdate}}</p>
+                </div>
+                <div class="col">
+                    <label for="Time"><strong>Time</strong></label>
+                    <p>{{appoint.appt_time}}</p>
+                </div>
+                <div class="col">
+                    <label for="Message"><strong>Message</strong></label>
+                    <p>{{appoint.symptoms}}</p>
+                </div>
+
+                <small class="col-md-6 text-muted">
+                    A non-refundable amount of <span class="text-success" style="font-size: 1rem;">${{appoint.price}} </span>will be paid
+                </small>
+                {% comment %}
+                {% endcomment %}
+
+
+
+                {% if appointy %}
+                    {% for item in appointy %}
+                        <button class="butin btn btn-outline-danger mt-3"><a class="text-decoration-none" href="{% url 'checkout_sub' item.id %}">Confirm Booking</a></button>
+                        <!-- <button class="w-50 pricin-but "><a href="" class="btn text-decoration-none"><strong>GET OFFER</strong></a></button> -->
+                    {% endfor %}                    
+                {% endif %} 
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+
+
+<br><br><br><br>
+<!-- footer content -->
+{% block footer %}
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>MEDICALE</h4>
+                <ul class="ul">
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Our Services</a></li>
+                    <li><a href="">Privacy Policy</a></li>
+                    <li><a href="">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>USEFUL LINKS</h4>
+                <ul class="ul">
+                    <li><a href="">FAQ</a></li>
+                    <li><a href="">Pharmacy Store</a></li>
+                    <li><a href="">Cart</a></li>
+                    <li><a href="">Infos</a></li>
+                    <li><a href="">Payment Options</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>SERVICES</h4>
+                <ul class="ul">
+                    <li><a href="">Emergency Services</a></li>
+                    <li><a href="">Qualified Doctors</a></li>
+                    <li><a href="">Outdoors Checkup</a></li>
+                    <li><a href="">24 Hours Services</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>FOLLOW US</h4>
+                <p class="qw text-muted">
+                    Far far away, behind the word mountains, far from the countries.
+                </p>
+                <div class="social-links">
+                    <a href=""><i class="fab fa-facebook-f"></i></a>
+                    <a href=""><i class="fab fa-twitter"></i></a>
+                    <a href=""><i class="fab fa-instagram"></i></a>
+                    <a href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="semi-footer text-center mt-4 pt-3">
+            <p class="qe mt-3">
+                Copyright &copy;2022 All rights reserved | This website is made with <i class="fa-solid fa-heart"></i> by MooglesMe
+            </p>
+        </div>
+    </div>
+</footer>
+{% endblock footer %}

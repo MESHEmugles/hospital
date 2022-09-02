@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+{% load humanize %}
+
+
+<!-- title section -->
+{% block title %} |Login{% endblock title %}
+
+<!-- content section -->
+{% block content %}
+<div class="login-page bg-white">
+    <div class="container-fluid">
+        <div class="login-writting container">
+            <h2 class="anak"><a href="{% url 'index' %}" class="i text-decoration-none m"><strong> M<span class="log">E</span>D<span class="log">I</span>C<span class="log">A</span>L<span class="log">E</span></strong></a></h2>
+            <h4 class="text-center mt-5 pt-5"><strong class="m"> Welcome Back </strong><br><span class="log"> Login to view your personal details and records</span></h4>
+            {% if messages %}
+                {% for item in messages %}
+                    <div class="alert alert-primary mb-0" role="alert">
+                    {{item}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="container mt-3 pt-4 mb-4 align-items-center">
+            <div class="row justify-content-around login-row">
+                <div class="col-sm-4 mb-4 pb-5 mt-5 pt-2">
+                    <h4 class="m text-center">Account Sign-In</h4>
+
+                    <form action="{% url 'loggin' %}" method="POST">
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <label class="log" for="inputName">Username</label>
+                            <input type="text" name="username" class="form-control border-1 bg-transparent " id="inputName" required>
+                            <i class="fas fa-user ml-auto" style="position: absolute;top: 31%;left: 90%"></i>
+                        </div>
+                        <div class="form-group">
+                            <label class="log" for="inputPassword4">Password</label>
+                            <input type="password" name="password" class="form-control bg-transparent" id="inputPassword4" required>
+                            <i class="fas fa-lock ml-auto" style="position: absolute;top: 60%;left: 90%"></i>
+                        </div>
+                        <button type="submit" value="Loggin" class="btn h-100 w-50 im">Submit</button>
+                    </form>
+                </div>
+                <div class="col-sm-4 mt-5 pt-2 acct">
+                    <h2 class="m">Create Your Account</h2>
+                    <span class="de ">
+                        Please create an account if you have not yet scheduled 
+                        online us. <b>Note: This account information is stored both 
+                        on the servers and on premises.</b>
+                    </span><br>
+                    <a href="{% url 'signup' %}" class="btn mi w-50 mt-5">Sign Up <i class="fa-solid fa-angle-right text-white 2x"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
